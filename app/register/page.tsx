@@ -8,17 +8,25 @@ const steps = ['Personal', 'Company', 'Workspace', 'Security', 'Finish'];
 export default function RegisterPage() {
   return (
     <AuthShell title="Create account" subtitle="Set up your PayFix workspace in a few quick steps.">
-      <div className="mb-6 flex flex-wrap gap-2">
-        {steps.map((step, index) => (
-          <div
-            key={step}
-            className={`rounded-full px-3 py-1 text-xs font-semibold ${
-              index === 0 ? 'bg-blue-600 text-white' : 'bg-slate-100 text-slate-600'
-            }`}
-          >
-            {index + 1}. {step}
-          </div>
-        ))}
+      <div className="mb-6">
+        <div className="mb-3 flex items-center justify-between text-xs font-medium uppercase tracking-[0.2em] text-slate-400">
+          <span>Registration progress</span>
+          <span>Step 1 of 5</span>
+        </div>
+        <div className="grid grid-cols-5 gap-2">
+          {steps.map((step, index) => (
+            <div key={step} className="flex flex-col gap-2">
+              <div
+                className={`h-2 rounded-full transition ${
+                  index === 0 ? 'bg-blue-600' : 'bg-slate-200'
+                }`}
+              />
+              <div className={`text-[11px] font-semibold ${index === 0 ? 'text-blue-700' : 'text-slate-400'}`}>
+                {step}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
       <form className="flex flex-col gap-5">
@@ -73,9 +81,14 @@ export default function RegisterPage() {
           </span>
         </label>
 
-        <Button type="submit" className="w-full">
-          Continue
-        </Button>
+        <div className="flex gap-3">
+          <Button type="button" variant="outline" className="w-full">
+            Back
+          </Button>
+          <Button type="submit" className="w-full">
+            Continue
+          </Button>
+        </div>
 
         <p className="text-center text-sm text-slate-600">
           Already have an account?{' '}
